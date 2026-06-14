@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Racepoint · Tester-Bewertung Alt vs. Neu · Desktop + Mobil · Runde 3 (intern)</title>
+<!-- ===== RACEPOINT KOMBI-PROTOTYP · WEGWERF-CODE · TESTER-AUSWERTUNG (Runde 3, faire Mobil-Erfassung, Alt+Neu je Geraet) ===== -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { cond:['"Roboto Condensed"','sans-serif'], anton:['Anton','sans-serif'] },
+  colors: { rp: { red:'#E83637', reddark:'#c5282a', ink:'#0e0f11' } }
+} } }
+</script>
+<link rel="stylesheet" href="kombi.css">
+<style>
+  .bar { height:.5rem; border-radius:9999px; background:rgba(255,255,255,.1); overflow:hidden; }
+  .bar > span { display:block; height:100%; border-radius:9999px; }
+  .catbar { height:.4rem; }
+</style>
+</head>
+<body class="text-white">
+
+<div id="site-header"></div>
+
+<!-- =================== HERO / KENNZAHL =================== -->
+<section class="relative pt-28 pb-12 border-b border-white/10 overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-zinc-900 to-rp-ink"></div>
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/15 px-3 py-1 text-xs font-medium mb-5"><span class="h-1.5 w-1.5 rounded-full bg-rp-red"></span> Interne Auswertung · Runde 3 · faire Mobil-Erfassung · nicht öffentlich</div>
+    <h1 class="font-anton text-4xl md:text-6xl uppercase leading-[0.95]">Wie kommt die neue Seite an?</h1>
+    <p class="mt-4 text-white/70 max-w-3xl text-lg">10 Tester · 8 Kundentypen plus Marketing- und UI/UX-Experte · haben die <b class="text-white">alte Seite (racepoint.be)</b> und den <b class="text-white">neuen Prototyp</b> verglichen. Neu in dieser Runde: <b class="text-white">beide Seiten je Gerät fair erfasst</b> · Mobil als real lesbare 390-px-Segmente statt als verzerrtes Full-Page-Bild, und <b class="text-white">auch die alte Seite getrennt in Desktop und Mobil</b>. Skala 1 bis 10 (10 = Bestnote). Aktuell nur Deutsch · Prototyp-Status (tote Links, Beispieldaten, Hero-Video als Standbild) wurde berücksichtigt, bewertet wurden Seite, Inhalt, Optik und Mobil-Tauglichkeit.</p>
+
+    <!-- Gesamt-Kennzahl -->
+    <div class="mt-9 grid sm:grid-cols-3 gap-4">
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+        <div class="text-xs uppercase tracking-widest text-white/40">Alte Seite</div>
+        <div class="mt-1 font-anton text-5xl text-white/70" id="kpi-old">–</div>
+        <div class="bar mt-3"><span class="bg-white/35" id="kpi-old-bar" style="width:0"></span></div>
+        <div class="mt-2 text-xs text-white/45">Ø über alle 10 Tester</div>
+      </div>
+      <div class="rounded-2xl bg-rp-red/10 ring-1 ring-rp-red/40 p-6">
+        <div class="text-xs uppercase tracking-widest text-rp-red">Neuer Prototyp</div>
+        <div class="mt-1 font-anton text-5xl text-white" id="kpi-new">–</div>
+        <div class="bar mt-3"><span class="bg-rp-red" id="kpi-new-bar" style="width:0"></span></div>
+        <div class="mt-2 text-xs text-white/55">Ø über alle 10 Tester</div>
+      </div>
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 flex flex-col justify-center">
+        <div class="text-xs uppercase tracking-widest text-white/40">Veränderung</div>
+        <div class="mt-1 font-anton text-5xl text-rp-red" id="kpi-delta">–</div>
+        <div class="mt-2 text-sm text-white/60">deutlicher Sprung · Neu gewinnt bei <b class="text-white">allen 10</b> Testern</div>
+      </div>
+    </div>
+
+    <!-- Geraete-Matrix Alt vs Neu -->
+    <div class="mt-4 rounded-2xl bg-black/30 ring-1 ring-white/10 p-6">
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div class="max-w-xl">
+          <div class="text-xs uppercase tracking-widest text-white/40">Geräte-Matrix · Alt vs. Neu</div>
+          <div class="text-sm text-white/60 mt-1">Diesmal beide Seiten je Gerät fair gemessen (Mobil als lesbare 390-px-Segmente). Ø der 10 Geräte-Noten.</div>
+        </div>
+        <div class="flex items-end gap-8">
+          <div>
+            <div class="text-xs uppercase tracking-widest text-white/40">Lücke Neu</div>
+            <div class="font-anton text-4xl" id="kpi-gap-neu">–</div>
+            <div class="text-[11px] text-white/45">Mobil zu Desktop</div>
+          </div>
+          <div>
+            <div class="text-xs uppercase tracking-widest text-white/40">Lücke Alt</div>
+            <div class="font-anton text-4xl text-white/60" id="kpi-gap-alt">–</div>
+            <div class="text-[11px] text-white/45">Mobil zu Desktop</div>
+          </div>
+        </div>
+      </div>
+      <div id="devmatrix" class="mt-5 grid grid-cols-[5rem_1fr_1fr] gap-x-5 gap-y-3 max-w-3xl items-center"></div>
+      <p class="mt-4 text-xs text-white/50">Der Befund dieser Runde: Mit fairer Erfassung ist die <b class="text-white/80">Mobil-Lücke der neuen Seite verschwunden</b> (Mobil sogar minimal über Desktop). Der frühere Rückstand war großteils ein Mess-Artefakt des herunterskalierten Full-Page-Bildes. Der Alt-Split zeigt zugleich, wo die alte Seite wirklich schwach war: <b class="text-white/80">gerade mobil</b>. Verbleibende Mobil-Punkte sind reiner A11y-Feinschliff, siehe „Mobil-Befunde&ldquo;.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== VERDIKT =================== -->
+<section class="border-b border-white/10 bg-zinc-950">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-14 grid md:grid-cols-[1.3fr_1fr] gap-10">
+    <div>
+      <div class="text-sm text-rp-red font-semibold uppercase tracking-wider">Das Wichtigste in Kürze</div>
+      <h2 class="mt-2 font-anton text-3xl md:text-4xl uppercase">Mobil-Lücke geschlossen, jetzt zählt der Feinschliff</h2>
+      <p class="mt-4 text-white/75 text-lg leading-relaxed">Der neue Prototyp gewinnt weiter bei <b class="text-white">10 von 10</b> Testern (Ø 3,8 auf 7,8). Die zwei Nachbesserungen wirken: Der <b class="text-white">Fahrwerk-Service steht jetzt auf der Startseite</b> (Jens, Klaus und Stefan registrieren ihn), und der <b class="text-white">Social-Proof-Block mit YouTube-Abo und Newsletter</b> wird vom Marketing als richtiger Schritt gewertet. Stärkster Hebel bleibt <b class="text-white">Achim als Personenmarke</b> und die Verzahnung mit den Videos (Marketing-Personenmarke 2 auf 9, Emotion +4,6, Inhalt +4,3).</p>
+      <p class="mt-3 text-white/75 text-lg leading-relaxed">Die eigentliche Nachricht steckt in der Geräte-Matrix. Nachdem Mobil diesmal <b class="text-white">fair als lesbare 390-px-Segmente</b> erfasst wurde, ist die Mobil-Lücke der neuen Seite weg: <b class="text-white">Desktop 7,6, Mobil 7,7</b>. Reparatur, Familie, der 3-Schritte-Finder und das Anfrage-Formular funktionieren auf dem Handy sauber. Der frühere Rückstand aus Runde 2 war zu einem guten Teil ein Mess-Artefakt. Zum Vergleich macht der Alt-Split sichtbar, wo die alte Seite wirklich verlor: mobil nur <b class="text-white">3,1</b>.</p>
+      <p class="mt-3 text-white/75 text-lg leading-relaxed">Die ehrliche Gegenstimme bleibt Reinhold: „Der Experte aus den Videos&ldquo; und 80.000 Abos vor dem Meisterbrief sind für ihn die falsche Reihenfolge, Schwarz-Rot wirkt auf ihn „wie ein Gaming-Shop&ldquo;. Dazu kommen handwerkliche Restpunkte vom UI/UX-Experten: zu kleine Tap-Targets bei Chips und grenzwertiger Kontrast im Dark-Theme.</p>
+    </div>
+    <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+      <div class="text-xs uppercase tracking-widest text-white/40 mb-3">Empfehlung</div>
+      <ul class="space-y-3 text-sm text-white/80">
+        <li class="flex gap-3"><span class="text-rp-red font-bold">→</span> Richtung halten: Video-First + Personenmarke trägt bei jedem Tester.</li>
+        <li class="flex gap-3"><span class="text-rp-red font-bold">→</span> <b class="text-white">Mobil ist kein Strukturproblem mehr</b>, nur noch A11y-Feinschliff: Tap-Targets ≥ 44 px, Kontrast ≥ 4,5:1.</li>
+        <li class="flex gap-3"><span class="text-rp-red font-bold">→</span> Vertrauen für Skeptiker: Meister/Werkstatt gleichwertig zu den YouTube-Zahlen in den ersten Viewport.</li>
+        <li class="flex gap-3"><span class="text-rp-red font-bold">→</span> Echte Kundenstimmen ergänzen und den Fahrwerk-Service vertiefen (eigene Seite, Formular-Feld).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =================== RANKING =================== -->
+<section class="border-b border-white/10">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-14">
+    <h2 class="font-anton text-3xl md:text-4xl uppercase">Gesamtnote je Tester · Alt vs. Neu</h2>
+    <p class="mt-2 text-white/60">Mittelwert über alle Kategorien. <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2.5 w-2.5 rounded-full bg-white/35"></span>Alt</span> · <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2.5 w-2.5 rounded-full bg-rp-red"></span>Neu</span> · rechts: Geräte-Noten je Tester (Desktop / Mobil) für Neu und Alt.</p>
+    <div id="ranking" class="mt-8 space-y-5"></div>
+  </div>
+</section>
+
+<!-- =================== KATEGORIE-VERGLEICH (KUNDEN) =================== -->
+<section class="border-b border-white/10 bg-zinc-950">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-14">
+    <h2 class="font-anton text-3xl md:text-4xl uppercase">Wo punktet die neue Seite?</h2>
+    <p class="mt-2 text-white/60">Durchschnitt der 8 Kundentypen je Bewertungs-Kategorie.</p>
+    <div id="catcompare" class="mt-8 grid md:grid-cols-2 gap-x-12 gap-y-6"></div>
+  </div>
+</section>
+
+<!-- =================== QUERSCHNITT-BEFUNDE =================== -->
+<section class="border-b border-white/10">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-14">
+    <h2 class="font-anton text-3xl md:text-4xl uppercase">Querschnitt-Befunde</h2>
+    <p class="mt-2 text-white/60">Was mehrere Tester unabhängig voneinander angemerkt haben · die echten Baustellen.</p>
+    <div id="findings" class="mt-8 grid md:grid-cols-2 gap-4"></div>
+  </div>
+</section>
+
+<!-- =================== MOBIL-BEFUNDE =================== -->
+<section class="border-b border-white/10 bg-zinc-950">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-14">
+    <h2 class="font-anton text-3xl md:text-4xl uppercase">Mobil-Befunde</h2>
+    <p class="mt-2 text-white/60">Diesmal fair erfasst (390-px-Segmente). Ergebnis: Mobil trägt. Es bleiben kleine A11y-Punkte.</p>
+    <div id="findings-mobil" class="mt-8 grid md:grid-cols-2 gap-4"></div>
+    <div class="mt-6 rounded-2xl bg-rp-red/10 ring-1 ring-rp-red/25 p-5">
+      <div class="text-[11px] uppercase tracking-widest text-rp-red mb-1">Läuft mobil schon gut</div>
+      <p class="text-sm text-white/80">Mit fairer Segment-Erfassung liegt die neue Seite mobil gleichauf mit Desktop (Mobil 7,7 zu Desktop 7,6). Reparatur-Seite, Familienseite, der 3-Schritte-Finder und das Anfrage-Formular funktionieren auf 390&nbsp;px sauber und tippfreundlich, mehrfach gelobt von Klaus, Sandra, Nadia und Stefan. Im Kontrast dazu war die alte Seite gerade mobil am schwächsten (Ø&nbsp;3,1): gequetschtes Desktop-Layout, winzige Schrift, Akkordeon ohne Auswahl-Indikatoren.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== O-TÖNE KUNDEN =================== -->
+<section class="border-b border-white/10">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-14">
+    <h2 class="font-anton text-3xl md:text-4xl uppercase">Die 8 Kundentypen im O-Ton</h2>
+    <p class="mt-2 text-white/60">Jede Karte: Note Alt auf Neu, Geräte-Noten (Neu und Alt je Desktop/Mobil), was die Person sucht, Stärken &amp; Lücken, Mobil-Beobachtungen und ihr Satz an Achim.</p>
+    <div id="cards-kunden" class="mt-8 grid lg:grid-cols-2 gap-5"></div>
+  </div>
+</section>
+
+<!-- =================== EXPERTEN =================== -->
+<section class="border-b border-white/10 bg-zinc-950">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-14">
+    <h2 class="font-anton text-3xl md:text-4xl uppercase">Die Experten-Brillen</h2>
+    <p class="mt-2 text-white/60">Marketing-Strategie und UI/UX im Detail.</p>
+    <div id="cards-experten" class="mt-8 grid lg:grid-cols-2 gap-5"></div>
+  </div>
+</section>
+
+<!-- =================== HANDLUNGSEMPFEHLUNGEN =================== -->
+<section class="border-b border-white/10">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-14">
+    <h2 class="font-anton text-3xl md:text-4xl uppercase">Was wir daraus machen</h2>
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+        <div class="text-xs uppercase tracking-widest text-rp-red mb-4">Mobil &amp; A11y (Feinschliff, vor Launch)</div>
+        <ul class="space-y-3 text-sm text-white/80">
+          <li class="flex gap-3"><span class="text-rp-red font-bold shrink-0">1</span> <b class="text-white">Tap-Targets ≥ 44&nbsp;px</b> für Filter-Chips (Videos) und Spec-Tags auf den Bike-Karten (UI/UX).</li>
+          <li class="flex gap-3"><span class="text-rp-red font-bold shrink-0">2</span> <b class="text-white">Kontrast im Dark-Theme auf ≥ 4,5:1</b> (WCAG&nbsp;AA): helle Labels, Chip-Tags und kursive Öffnungszeiten anheben, Preis-Schrift vergrößern.</li>
+          <li class="flex gap-3"><span class="text-rp-red font-bold shrink-0">3</span> <b class="text-white">Bike-Finder auf Kategorie-Seiten mobil kürzen</b> oder Bike-Liste und Preise vor den Finder ziehen (Marvin).</li>
+          <li class="flex gap-3"><span class="text-rp-red font-bold shrink-0">4</span> <b class="text-white">Bike-Finder kategoriespezifisch</b>: echte MTB-Sprache (Trail/Enduro/Bike-Park) und ein Marken-Shortcut für gezielte Sucher (Jens, Tom).</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+        <div class="text-xs uppercase tracking-widest text-rp-red mb-4">Inhalt / Vertrauen &amp; vor Go-Live</div>
+        <ul class="space-y-3 text-sm text-white/80">
+          <li class="flex gap-3"><span class="text-rp-red font-bold shrink-0">5</span> <b class="text-white">Meister/Werkstatt gleichwertig zu den YouTube-Zahlen</b> in den ersten Viewport (Best-Ager).</li>
+          <li class="flex gap-3"><span class="text-rp-red font-bold shrink-0">6</span> <b class="text-white">Echte Kundenstimmen / Referenzen</b> ergänzen, schließt den Vertrauenskreis, den die Videos öffnen (Marketing, Stefan).</li>
+          <li class="flex gap-3"><span class="text-rp-red font-bold shrink-0">7</span> <b class="text-white">Fahrwerk-Service vertiefen</b>: eigene Unterseite und eigene Kategorie im Reparatur-Formular (Stefan, Jens, Klaus).</li>
+          <li class="flex gap-3"><span class="text-rp-red font-bold shrink-0">8</span> <b class="text-white">Familien-/Einsteiger-Einstieg höher ziehen</b> und ersten Eindruck etwas einladender machen (Sandra, Nadia).</li>
+          <li class="flex gap-3"><span class="text-rp-red font-bold shrink-0">9</span> <b class="text-white">Leasing-Monatsraten, Specialized-Direkteinstieg, Mehrsprachigkeit DE/FR</b> ergänzen (Nadia, Tom, Marketing).</li>
+        </ul>
+      </div>
+    </div>
+    <p class="mt-6 text-xs text-white/35">Quelle: 10 Persona-Bewertungen (8 Kunden + Marketing + UI/UX), durchgeführt am Prototyp <code>kombi/</code> gegen racepoint.be, auf Basis echter gerenderter Screenshots in Desktop (1280) und Mobil (390, als lesbare Viewport-Segmente). Beide Seiten je Gerät getrennt bewertet. Gesamtnoten als Kategorie-Mittelwert (nachgerechnet). Interne Arbeitsunterlage, Runde 3.</p>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="data.js"></script>
+<script>window.RP_PAGE = { active:'' };</script>
+<script src="app.js"></script>
+
+<!-- ===================== DATEN + RENDERER ===================== -->
+<script>
+const STD = {
+  ersteindruck:'Erster Eindruck', design:'Design & Optik', orientierung:'Orientierung',
+  inhalt:'Inhalt & Relevanz', vertrauen:'Vertrauen', emotion:'Emotion & Sog', cta:'Nächster Schritt'
+};
+const STDCATS = ['ersteindruck','design','orientierung','inhalt','vertrauen','emotion','cta'];
+
+const DATA = [
+  { id:'enthusiast', rolle:'kunde', persona:'Marvin, 32', sub:'Überregionaler High-End-Enthusiast & YouTube-Follower',
+    scores_old:{ersteindruck:4,design:4,orientierung:5,inhalt:4,vertrauen:5,emotion:3,cta:4},
+    scores_new:{ersteindruck:9,design:8,orientierung:8,inhalt:9,vertrauen:8,emotion:9,cta:8},
+    note_desktop_alt:4, note_mobil_alt:4, note_desktop_neu:8, note_mobil_neu:8,
+    mobil:'Der Hero auf der Startseite trifft sofort: großes fettes Headline-Statement, drei klare CTAs untereinander, kein Gedränge, das funktioniert auf 390&nbsp;px sehr sauber. Leicht holprig: auf der Rennrad-Kategorie schiebt der lange 3-Schritt-Finder die Bike-Liste weit nach unten, man scrollt eine Weile bis zu den Preisen.',
+    mobil_alt:'Die alte Seite zeigt mobil ein aufgeklapptes Sortiment-Dropdown direkt unter dem Hero, das wirkt wie ein unfertiges Akkordeon und lädt nicht zum Stöbern ein.',
+    sucht:'Das konkrete High-End-Bike aus dem letzten Video, die Gewissheit dass Achim es beschaffen und fitten kann, und einen direkten Draht zu Achim ohne Formular-Odyssee.',
+    findet:'Neu: ja, klar. Er landet in der Energie des Kanals, sieht die Videos auf der Startseite, klickt auf das S-Works Tarmac SL8 LTD und findet eine echte Bike-Detailseite mit Specs, Video-Link und Anfrage-Button. Alt: kaum sichtbarer Videocorner, kein Bike-Detail, kein Preis, kein klarer Weg zur Anfrage.',
+    staerken:['Video-Content und Bike-Detailseite sind konsequent verzahnt: jede Bike-Karte hat einen Video-Button direkt daneben, das schließt den Kreis zwischen Kanal und Laden.','Der Hero-Satz „Der Experte aus den Videos. Jetzt für dein Bike.&ldquo; erklärt in einem Satz, warum ein Fernkunde anreist.'],
+    schwaechen:['Die Über-uns-Seite zeigt ein Paarbild, das eher an einen kleinen Familienbetrieb erinnert als an die Expertise eines Meister-Bikefitters mit 18 Mio. Views.','Der Fahrwerk-Service wird zwar genannt, verschwindet aber in der Navigationslogik. Als Fernkunde will ich vorher sicher wissen, ob auch Federgabel und Dämpfer gemacht werden.'],
+    oton:'Ich hab das SL8-LTD-Video dreimal gesehen, bin auf die neue Seite, hab den Anfragen-Button sofort gefunden und dachte: okay, der meint das ernst. Das alte Ding hätte ich nach 20 Sekunden weggeklickt.',
+    satz:'Die neue Seite macht endlich das, was dein Kanal verspricht. Verlink die Bike-Detailseiten direkt aufs Video, dann reise ich 200 km an.' },
+
+  { id:'rennrad', rolle:'kunde', persona:'Stefan, 45', sub:'Lokaler Rennrad-/Gravel-Enthusiast',
+    scores_old:{ersteindruck:4,design:4,orientierung:4,inhalt:3,vertrauen:4,emotion:3,cta:3},
+    scores_new:{ersteindruck:8,design:8,orientierung:8,inhalt:8,vertrauen:7,emotion:8,cta:8},
+    note_desktop_alt:4, note_mobil_alt:3, note_desktop_neu:8, note_mobil_neu:8,
+    mobil:'Die neue Startseite funktioniert mobil fast besser als Desktop: drei große CTAs sofort im Blick, Bike-Finder klar trennbar, Schrift und Kontrast gut lesbar. Die Bikefitting-Seite mit Preisbox und FAQ-Akkordeon ist auf 390&nbsp;px mustergültig strukturiert.',
+    mobil_alt:'Auf dem Handy kollabiert das Sortiment auf einen Burger-Einstieg, der WhatsApp-Link als einziger echter CTA wirkt improvisiert, die Kacheln unter dem Fold sind kaum zu erkennen.',
+    sucht:'Einen Händler, dem ich nicht erklären muss was ein Retül-Fitting ist, der mir Renn- oder Gravelbike ohne Verkäufersprech zeigt und mich nicht wie einen Einsteiger behandelt.',
+    findet:'Neu: ja, vom ersten Satz an auf Augenhöhe (Asphalt, Tempo, Aero). Achim als Video-Experte plus Meister und Retül ist genau die Glaubwürdigkeit, die ich brauche. Alt hätte mich nach zwanzig Sekunden verloren.',
+    staerken:['Hero-Hook „Der Experte aus den Videos&ldquo; baut Vertrauen vor, Achim ist kein Unbekannter.','Rennrad- und Gravel-Seite mit echten Preisen, Komponenten-Tags und Video-Link pro Bike trifft das erwartete Niveau.','Bikefitting-Seite nennt Preis, Ablauf, FAQ und Terminformular auf einer Seite.'],
+    schwaechen:['Fahrwerk-Service wird genannt, hat aber keine eigene Unterseite. Wer nach dem Fitting eine Fahrwerksabstimmung will, landet im Nichts.','Die Gravel-Seite ist eine Kopie der Rennrad-Seite. Gravel hat eigene Kaufgründe, ein Absatz zur Eifel/Ardennen-Relevanz wäre stärker.','Der Social-Proof (80.000 Abos) steht still da. Als Zahl funktioniert es, als Story noch nicht.'],
+    oton:'Ich klick auf Rennrad und sehe sofort einen S-Works Tarmac SL8 mit SRAM Red und Gewicht. Kein Bla. Erste Händlerseite im Umkreis von 100 km, wo ich nicht drei Klicks brauche, um zu sehen ob die Cervélo führen.',
+    satz:'Du gewinnst mich als Kunden, bevor ich den Laden betrete. Bring jetzt einen echten Erfahrungsbericht von jemandem, der Fitting und Kauf gemacht hat, dann ist das rund.' },
+
+  { id:'ebike', rolle:'kunde', persona:'Nadia, 38', sub:'E-Bike-/Pendler-/Einsteiger-Kundin',
+    scores_old:{ersteindruck:4,design:4,orientierung:4,inhalt:4,vertrauen:5,emotion:3,cta:3},
+    scores_new:{ersteindruck:7,design:6,orientierung:8,inhalt:8,vertrauen:8,emotion:7,cta:8},
+    note_desktop_alt:4, note_mobil_alt:3, note_desktop_neu:7, note_mobil_neu:8,
+    mobil:'Der 3-Schritte-Finder funktioniert mobil überraschend gut, die Kacheln sind tippfreundlich und sofort verständlich. Die Leasing-Sektion erscheint klar und ohne Fachchinesisch genau dort, wo ich anfange zu zögern.',
+    mobil_alt:'Mobil wirkt die E-Bikes-Seite wie eine Textwüste, der Slider ist kaum bedienbar und der einzige CTA-Button ist nach endlosem Scrollen fast nicht mehr zu finden.',
+    sucht:'Ein E-Bike für den Alltag, jemanden der mich ernst nimmt, klare Preise und idealerweise Leasing, ohne dafür einen Roman lesen zu müssen.',
+    findet:'Neu: ja, die Seite nimmt mich an die Hand. Hero spricht Pendeln und Alltag an, Finder und sichtbare Leasing-Sektion nehmen zwei Fragezeichen weg. Die alte Seite fühlte sich an wie ein Flyer für Downhill-Fahrer, nicht für mich.',
+    staerken:['Leasing wird aktiv erklärt und beworben, genau das überzeugt mich als Einsteigerin.','Achims Zitat und das Team-Foto geben dem Laden ein Gesicht, ich kaufe von einem Menschen.','Der Finder führt ohne Vorwissen, „Alltag/Komfort&ldquo; als erste Option trifft meine Situation.'],
+    schwaechen:['Das schwarz-rote Design schreckt mich anfangs ab, ich frage mich kurz ob das der richtige Laden für mich ist.','Die Einstiegspreise stehen unkommentiert neben dem Leasing-Hinweis, eine konkrete Monatsrate würde die Hemmschwelle deutlich senken.','Das Anfrage-Formular fragt nach Körpergröße und Wunschmodell, aber ohne Erklärung. Als Einsteigerin weiß ich noch kein Modell.'],
+    oton:'Okay, der Laden sieht aus wie für Profis. Aber dann sehe ich Alltag, Komfort, Pendeln und denke: hey, das bin ich. Und Leasing über den Arbeitgeber, das hatte ich vergessen. Vielleicht schreibe ich denen mal.',
+    satz:'Das Konzept trifft mich als Einsteigerin viel besser als erwartet, aber zeig mir konkrete Monatsraten beim Leasing, dann ist die letzte Hürde weg.' },
+
+  { id:'specialized', rolle:'kunde', persona:'Tom, 29', sub:'Gezielter Specialized-Sucher',
+    scores_old:{ersteindruck:5,design:5,orientierung:4,inhalt:4,vertrauen:6,emotion:3,cta:3},
+    scores_new:{ersteindruck:9,design:8,orientierung:8,inhalt:8,vertrauen:9,emotion:9,cta:8},
+    note_desktop_alt:4, note_mobil_alt:3, note_desktop_neu:8, note_mobil_neu:8,
+    mobil:'Die Bike-Detailseite zum S-Works Tarmac SL8 LTD lädt mobil sofort mit Preis, SRAM Red AXS und Gewicht als klare Karten. Der rote Anfragen-Button klebt dauerhaft im Blick. Einziger Haken: das Hero-Standbild wirkt auf dem kleinen Screen flacher als auf Desktop.',
+    mobil_alt:'Auf dem Handy ist die alte Seite ein langer Scroll ohne Struktur. Das Specialized-Elite-Store-Badge taucht erst ganz unten im Footer auf, als gezielter Sucher bin ich da längst weg.',
+    sucht:'Bestätigung, dass Racepoint autorisierter Specialized-Elite-Händler ist, und dann sofort eine Anfrage zum S-Works Tarmac oder Aethos.',
+    findet:'Neu: ja. Das Elite-Store-Badge steht prominent in der Hero-Leiste, die Rennrad-Kategorie zeigt die S-Works-Modelle mit Preis und Specs, ein Anfrageformular mit Feld „Wunschmodell&ldquo; wartet. Alt nennt den Elite-Store nur, vergräbt ihn im Footer und bietet keinen Kaufeinstieg für ein konkretes Modell.',
+    staerken:['Elite-Store-Badge plus Abonnentenzahl direkt im Hero schafft sofort Vertrauen ohne Scrollen.','Bike-Detailseite zeigt SRAM Red AXS, Roval-Laufräder und Gewicht auf einen Blick.','Anfrageformular mit Wunschmodell-Feld und Lieferzeithinweis nimmt Unsicherheit weg.','Video-Integration verknüpft Produktwunsch mit Achims Expertise authentisch.'],
+    schwaechen:['Der Bike-Finder beginnt mit „Wie fährst du?&ldquo; statt mit der Marke. Ich weiß schon, dass ich Specialized will, der Finder ist für mich ein Umweg.','Kein direkter Link von der Startseite auf eine gefilterte Specialized-Übersicht, der Weg geht über Rennrad und manuelles Scrollen.'],
+    oton:'Ich öffne die Seite und sehe sofort: Specialized Elite Store, 80.000 Abos, S-Works Tarmac als erstes Video. Das ist der Laden. Klick auf Rennrad, SL8 LTD mit Preis und Schaltung, Anfragen, fertig. Alt wusste ich nach 10 Sekunden nicht mal, ob die überhaupt Specialized führen.',
+    satz:'Deine neue Seite macht in 15 Sekunden klar, dass du der Specialized-Experte aus den Videos bist, und lässt mich dann sofort anfragen. Genau die Reise, die ich als gezielter Käufer will.' },
+
+  { id:'mtb', rolle:'kunde', persona:'Jens, 24', sub:'MTB All-Mountain / Enduro-Fahrer',
+    scores_old:{ersteindruck:4,design:4,orientierung:5,inhalt:4,vertrauen:5,emotion:3,cta:4},
+    scores_new:{ersteindruck:8,design:8,orientierung:7,inhalt:8,vertrauen:8,emotion:9,cta:7},
+    note_desktop_alt:4, note_mobil_alt:3, note_desktop_neu:8, note_mobil_neu:7,
+    mobil:'Die MTB-Seite funktioniert mobil richtig gut: Hero „Trail, Wald, Adrenalin&ldquo; trifft sofort, die Bike-Karten mit Tags (Enduro, Trail, Fahrwerk) sind daumenfreundlich, der Finder lässt sich sauber tippen. Haken: der Finder fragt nach Fahrstil-Kategorien, die eher Rennrad klingen statt klarer MTB-Sprache.',
+    mobil_alt:'Auf dem Smartphone ist die alte MTB-Seite ein langer Textblock unter einem dunklen Hero ohne ein einziges Produktbild zum Anklicken. Man scrollt, liest und landet im Footer. Null Sog.',
+    sucht:'Ein vollgefedertes Enduro oder All-Mountain bei einem Laden, der die Szene kennt und Fahrwerk selbst schraubt.',
+    findet:'Neu: ja. „Trail, Wald, Adrenalin&ldquo; und sofort konkrete Bikes mit Preis, Fahrwerk-Specs und Video-Link. Tag und Nacht zur alten Seite, die unter einem generischen Banner nur Beratungstext ohne Bike-Foto lieferte. Besonders stark: der Fahrwerk-Service steht jetzt explizit auf der Startseite.',
+    staerken:['Hero „Trail, Wald, Adrenalin&ldquo; schlägt sofort in meine Kerbe, null Erklärungsbedarf.','Bike-Karten mit Preis, Fahrwerk-Tags und Video-Link pro Modell, z. B. Stumpjumper EVO ab 4.990 € mit „Fox 36, Trail/Enduro&ldquo;.','Videos-Seite bringt die Build-Thumbnails aus dem Kanal direkt in den Shop.','Fahrwerk-Service prominent auf der Startseite, als Eifel-Fahrer ein echter Anreisefaktor.'],
+    schwaechen:['Der Finder fragt „Wie fährst du?&ldquo; mit Optionen Alltag/Sportlich/Racer. Das ist Rennrad-Sprache, mir fehlt Trail/Enduro/Bike-Park, ich würde abbrechen.','Auf der Videos-Seite dominieren Rennrad-Builds, ein prominenter MTB-Filter fehlt.','Kein sichtbarer Hinweis, welche Fahrwerk-Marken (Fox, RockShox) geschraubt werden, das wäre ein sofortiger Vertrauensbeweis.'],
+    oton:'Endlich. „Trail, Wald, Adrenalin&ldquo; und dann gleich der Stumpjumper EVO mit Fox 36 und Preis. Dass die Jungs auch Fahrwerk-Service machen, hab ich erst jetzt auf der Startseite gecheckt. Das ist der Grund, warum ich aus der Eifel anfahre.',
+    satz:'Die MTB-Seite hat genau das richtige Feeling. Fix den Finder mit echter Enduro-Sprache und stell die MTB-Werkstatt deutlicher raus, dann kommen die Trail-Fahrer aus der ganzen Grenzregion.' },
+
+  { id:'werkstatt', rolle:'kunde', persona:'Klaus, 52', sub:'Werkstatt-/Service-Kunde, markenunabhängig',
+    scores_old:{ersteindruck:4,design:4,orientierung:3,inhalt:3,vertrauen:5,emotion:3,cta:3},
+    scores_new:{ersteindruck:8,design:8,orientierung:9,inhalt:9,vertrauen:8,emotion:7,cta:9},
+    note_desktop_alt:3, note_mobil_alt:3, note_desktop_neu:8, note_mobil_neu:9,
+    mobil:'Auf dem Handy ist die Werkstatt-Seite sofort komplett: Fremdmarken-Aussage, Leistungskacheln und Preise passen auf einen Scroll. Das Formular ist tippfreundlich und klar beschriftet.',
+    mobil_alt:'Auf dem Handy kommt man zur Werkstatt erst nach langem Scroll durch Kaufberatungstexte. Der CTA-Button wirkt zu klein und verliert sich.',
+    sucht:'Ob die meinen Trek reparieren, was es kostet und wie ich einen Termin bekomme.',
+    findet:'Neu: ja, sehr klar. Der Hero sagt „alle Marken, nicht nur Specialized&ldquo; und nennt Richtwerte (Inspektion ab 49 €). Die alte Seite listete Arbeiten auf, schwieg aber zu Preisen und Fremdmarken komplett.',
+    staerken:['Hero-Aussage „Service für alle Marken&ldquo; beantwortet meine Kernfrage in Sekunden.','Preistabelle mit Richtwerten und kostenlosem Kostenvoranschlag schafft Vertrauen ohne Overcommitment.','Reparatur-Formular mit Feld „Marke/Modell&ldquo; und Typ-Auswahl macht den Einstieg niedrigschwellig.','Footer nennt „Werkstatt vormittags&ldquo; als praktische Planungsinfo.'],
+    schwaechen:['Fahrwerk-Service steht auf der Startseite, fehlt aber als Kategorie im Reparatur-Formular, das verunsichert.','Kein Hinweis auf Wartezeiten oder Abgabemodalitäten, ich weiß nicht ob anrufen oder Formular reicht.'],
+    oton:'Endlich steht da schwarz auf weiß: Trek, Canyon, Cube, alles kein Problem. Und was eine Inspektion kostet, steht auch dran. Bei der alten Seite hatte ich keine Ahnung, ob die mein Rad überhaupt anfassen.',
+    satz:'Die Fremdmarken-Aussage ganz oben ist Gold wert, das hält viele Werkstattkunden davon ab, beim erstbesten Anruf wieder umzukehren.' },
+
+  { id:'familie', rolle:'kunde', persona:'Sandra, 41', sub:'Preisbewusste Familienradlerin',
+    scores_old:{ersteindruck:4,design:4,orientierung:5,inhalt:5,vertrauen:5,emotion:3,cta:4},
+    scores_new:{ersteindruck:7,design:6,orientierung:8,inhalt:8,vertrauen:7,emotion:7,cta:8},
+    note_desktop_alt:4, note_mobil_alt:4, note_desktop_neu:7, note_mobil_neu:8,
+    mobil:'Die Familienseite funktioniert auf dem Handy richtig gut: Hero mit Kind im Helm, klare Überschrift, zwei Buttons sofort im Blick. Der 3-Schritte-Finder fühlt sich nach echter Hilfe an, und der „Auch fürs kleine Budget&ldquo;-Block kommt, bevor ich aufgebe.',
+    mobil_alt:'Auf dem Handy wirkt die alte Seite wie ein schwarzes Loch. Kein Hinweis auf Kinderräder oder Familienfreundlichkeit im ersten Scroll, nur Logo und ein Button ins Sortiment.',
+    sucht:'Ein freundliches Signal, dass Racepoint auch für Normalfamilien mit normalem Budget da ist, und konkrete Hilfe bei der Radwahl für Kinder und Alltag.',
+    findet:'Neu: ja, deutlich. Die Familienseite spricht mich direkt an, nennt Einstiegspreise ab 480 €, zeigt Kinderrad und Alltagsrad nebeneinander und sagt „Auch fürs kleine Budget&ldquo;. Alt hatte zwar einen WhatsApp-Chat, aber erst nach einem dunklen Sportler-Intro.',
+    staerken:['Familienseite mit eigenem Hero (Kind mit Helm) und „Für jeden Tag und die ganze Familie&ldquo; trifft den richtigen Ton.','3-Schritte-Finder senkt die Hemmschwelle, kein Fachvokabular nötig.','Anfrage-Seite wirkt persönlich, Kategorie und Budget als erste Felder sind richtig priorisiert.','Einstiegspreise und Budget-Box machen klar: hier muss ich nicht reich sein.'],
+    schwaechen:['Der erste Eindruck der Startseite (schwarzes Hero, Rennrad-Videos, S-Works) lässt mich kurz zweifeln, ob ich hier richtig bin.','Die Familien-Kachel auf der Startseite ist klein, schwer erkennbar und kommt erst nach Rennrad, Gravel und MTB.','Auf der Anfrage-Seite kein Hinweis auf Lieferzeiten für Kinderräder oder ob Beratung auch telefonisch ohne Termin geht.'],
+    oton:'Ich dachte kurz: das ist eher was für meinen Mann mit seinen 80 Kilometern sonntags. Aber dann stand auf der Familienseite „ab 480 Euro&ldquo; fürs Kinderrad. Das hat mich aufatmen lassen.',
+    satz:'Die Familienseite ist wirklich gut geworden, aber stell sie auf der Startseite früher und sichtbarer hin, sonst finden uns die Sandras dieser Welt gar nicht erst.' },
+
+  { id:'bestager', rolle:'kunde', persona:'Reinhold, 58', sub:'Best-Ager Wiedereinsteiger (kritische Gegenstimme)',
+    scores_old:{ersteindruck:4,design:4,orientierung:5,inhalt:4,vertrauen:4,emotion:3,cta:4},
+    scores_new:{ersteindruck:6,design:6,orientierung:7,inhalt:7,vertrauen:6,emotion:5,cta:7},
+    note_desktop_alt:4, note_mobil_alt:3, note_desktop_neu:6, note_mobil_neu:6,
+    mobil:'Die neue Seite ist mobil klar strukturiert, Schriftgrößen gut lesbar, Buttons groß genug für ältere Finger. Aber weiße Schrift auf dunkelgrauem Service-Hintergrund ist bei schlechtem Licht anstrengend, da fehlt Kontrast.',
+    mobil_alt:'Auf dem Handy wirkt die alte Seite klein und gedrängt. Der weiße Text auf dem dunklen Hero-Foto ist schwer lesbar, die Navigations-Icons sind winzig.',
+    sucht:'Einen kompetenten, seriösen Fahrradbetrieb mit Meister, der mir als Wiedereinsteiger ein passendes E-Bike erklärt und es langfristig wartet, ohne mich abzufertigen.',
+    findet:'Teilweise. Meister-Zertifizierung, Bikefitting, Fahrwerk-Service, transparente Preise und ein Werkstatt-Formular sind echte Fortschritte. Aber der aggressive Schwarz-Rot-Look und die ständig vorgeschalteten YouTube-Zahlen lassen mich zuerst an einen Sportler-Shop denken, nicht an den ruhigen Fachmann.',
+    staerken:['Meister-Zertifizierung und Retül-Bikefitting auf der Startseite sichtbar, das schafft echtes Vertrauen.','Werkstatt-Seite mit Leistungsübersicht, Richtpreisen und Kontaktformular ist konkret und ehrlich.','Öffnungszeiten und Anfahrt sind im neuen Footer schnell gefunden, auch auf dem Handy.'],
+    schwaechen:['„Der Experte aus den Videos&ldquo; stellt die YouTube-Präsenz vor das Handwerk. Für mich wäre „Meisterwerkstatt seit 18 Jahren&ldquo; der richtige Einstieg.','80.000 Abonnenten sind für mich kein Qualitätsnachweis. Viele Klicks bedeuten nicht automatisch gute Arbeit am Rad.','Das durchgängige Schwarz-Rot wirkt auf mich wie ein Gaming-Shop. Als Wiedereinsteiger mit 4.000 € Budget frage ich mich, ob ich hier willkommen bin.'],
+    oton:'Ich schaue mir das an und denke: schön gemacht, aber ist das für mich? Überall YouTube, überall Videos. Ich will wissen, ob der Meister Zeit für mich hat und ob er auch mein altes Trek wartet. Das steht irgendwo, aber ich muss danach suchen.',
+    satz:'Zeig mir schon auf der Startseite den Meister und die Werkstatt, nicht erst die Abonnenten-Zahl, dann holst du auch den älteren Kunden ab, der kein YouTube kennt.' },
+
+  { id:'marketing', rolle:'experte', persona:'Marketing-Stratege', sub:'Brand & Positionierung',
+    cats:['positionierung','personenmarke','zielgruppe','funnel','reichweite','konsistenz','differenzierung'],
+    catLabels:{positionierung:'Positionierung',personenmarke:'Personenmarke Achim',zielgruppe:'Zielgruppen-Ansprache',funnel:'Conversion-Funnel',reichweite:'Reichweiten-Verzahnung',konsistenz:'Markenkonsistenz',differenzierung:'Differenzierung'},
+    scores_old:{positionierung:3,personenmarke:2,zielgruppe:3,funnel:2,reichweite:2,konsistenz:4,differenzierung:2},
+    scores_new:{positionierung:8,personenmarke:9,zielgruppe:8,funnel:7,reichweite:8,konsistenz:8,differenzierung:9},
+    note_desktop_alt:3, note_mobil_alt:2, note_desktop_neu:8, note_mobil_neu:8,
+    mobil:'Die neue Startseite funktioniert mobil hervorragend: kraftvoller Hero-Text, drei gestapelte CTAs (Termin, Bike anfragen, Reparatur) sofort tippbar und klar hierarchisch. Der 3-Schritt-Finder auf der E-Bike-Seite gibt auf kleinem Screen Orientierung ohne zu überfordern.',
+    mobil_alt:'Die alte Seite wirkt mobil wie ein notdürftig gequetschtes Desktop-Layout: zu viel Text auf einmal, der Videocorner bricht ohne Kontext ab, kein klarer nächster Schritt. Nachrangige Specialized-Logos dominieren visuell mehr als die Botschaft.',
+    sucht:'Nutzt der Prototyp Achims Media-Reichweite als strategischen Anker, oder behandelt er YouTube nur als schmückendes Beiwerk?',
+    findet:'Der Prototyp macht Achims Content-Universum zur Primärbotschaft: „Der Experte aus den Videos. Jetzt für dein Bike.&ldquo; positioniert den Kanal als Vertrauensbeweis und Eintrittspunkt. Die alte Seite verschwendet das Asset vollständig, Achim existiert dort nicht als Person.',
+    staerken:['Personenmarke konsequent durchgezogen: Achim auf Startseite, Über-uns und als Zitatgeber. Die Credential-Leiste (Meister, Retül, Elite Händler, 80k Abos, 18 Mio. Aufrufe) schafft quantifizierbares Vertrauen, das kein anonymer Shop repliziert.','Funnel erstmals durchdacht: jede Seite endet mit kontextpassendem CTA, die Reparatur-Seite hat das Formular direkt eingebettet, der Finder qualifiziert vor dem Gespräch.','Differenzierung über Reichweite ist authentisch: „Der Bikeshop aus den Videos&ldquo; skaliert als Markenaussage über alle Unterseiten.'],
+    schwaechen:['Der neue Social-Proof-Block (YouTube-Abo, Newsletter) ist als Idee richtig, aber noch zu schwach verankert. Es fehlen echte Kundenstimmen als Beweis, die den Vertrauenskreis schließen, den der Video-Content öffnet.','Die Videos-Seite ist eine Konzept-Stärke, aber die Brücke „Bike im Video gesehen, jetzt kaufen&ldquo; fehlt als klickbarer Layer direkt auf den Thumbnails.'],
+    oton:'Hier hat jemand verstanden, dass Achim kein Bikeshop-Betreiber ist, der zufällig einen YouTube-Kanal hat, sondern ein Content-Creator, der zufällig den besten Bikeshop der Region betreibt. Diese Umkehrung ist die Marke.',
+    satz:'Die neue Seite macht zum ersten Mal sichtbar, was du schon bist: ein bekanntes Gesicht für Specialized-Builds, das man persönlich besuchen kann.',
+    extra:{label:'Einordnung zu den 23.000 € der Agentur', text:'mum.lu hätte für 23.000 € wahrscheinlich eine handwerklich saubere, aber strategisch austauschbare Seite gebaut: Partnerlogos, Stock-Fotos, Über-uns-Text, Kontaktformular. Der Prototyp liefert das Entscheidende, was eine externe Agentur ohne tiefen Markenauftrag kaum leistet: die konsequente Übersetzung von Achims Media-Asset in eine Markenarchitektur, in der Reichweite, Vertrauen und Ladenbesuch unmittelbar verknüpft sind. Der Wert liegt im Konzept, nicht im Code, und der ist hier höher als der Agenturpreis.'} },
+
+  { id:'uiux', rolle:'experte', persona:'UI/UX-Experte', sub:'Usability, Mobile & Barrierefreiheit',
+    cats:['ia','usability','mobilefirst','hierarchie','performance','a11y','designsystem'],
+    catLabels:{ia:'Informationsarchitektur',usability:'Usability',mobilefirst:'Mobile-First',hierarchie:'Visuelle Hierarchie',performance:'Performance-Eindruck',a11y:'Accessibility',designsystem:'Designsystem-Konsistenz'},
+    scores_old:{ia:4,usability:4,mobilefirst:3,hierarchie:4,performance:5,a11y:4,designsystem:4},
+    scores_new:{ia:8,usability:8,mobilefirst:8,hierarchie:9,performance:7,a11y:7,designsystem:8},
+    note_desktop_alt:4, note_mobil_alt:3, note_desktop_neu:8, note_mobil_neu:7,
+    mobil:'Das Anfrage-Formular ist auf 390&nbsp;px sehr gut strukturiert: vollbreite Felder, ausreichend hohe Touch-Targets, klarer Absende-Button. Befund: Label-Kontrast auf dunkelgrauem Grund liegt vermutlich knapp unter WCAG&nbsp;AA 4,5:1, und die Chip-Tags auf den Bike-Karten (ca. 32&nbsp;px) sind als Tap-Target zu klein.',
+    mobil_alt:'Auf alt-sortiment kollabiert die Kategorie-Navigation zu einem aufgeklappten Akkordeon ohne Auswahl-Indikatoren, die Fließtext-Schrift wirkt auf 390&nbsp;px deutlich zu klein.',
+    sucht:'Ob der Prototyp die klassischen Mobile-UX-Fallen vermeidet: zu kleine Targets, fehlende Hierarchie auf engem Viewport und unzureichender Kontrast im Dark-Theme.',
+    findet:'Der Prototyp löst die zentralen Schwächen der alten Seite konsequent: klare Aufgabentrennung über dedizierte Seiten, dominante CTAs, durchgehende Designsprache. Wo die alte Seite mobil eine unstrukturierte Textwüste bot, wirkt der Prototyp auf 390&nbsp;px durch Vollbreite-Karten und fette Hierarchie sofort navigierbar.',
+    staerken:['Visuelle Hierarchie: die dreistufige Typo-Skala (Display-Heading, Body, Label-Cap) funktioniert auf allen Breiten und lenkt den Blick zuverlässig zum CTA.','Intent-getriebene IA: der 3-Schritt-Finder reduziert kognitive Last und führt Einsteiger ohne Fachwissen zur passenden Produktgruppe.','Social-Proof-Integration hebt Abos und Video-Tiles in den ersten Viewport, ohne die Conversion-CTAs zu verdrängen.'],
+    schwaechen:['A11y-Lücke Dark-Theme: hellgraue Labels, kursive Öffnungszeiten und Chip-Tags auf dunklem Grund erreichen mobil sehr wahrscheinlich nicht WCAG&nbsp;AA 4,5:1.','Tap-Target-Größe: Filter-Chips (Videos) und Spec-Tags auf den Bike-Karten sind zu schmal für sichere Daumenbedienung, 44×44&nbsp;px ist nicht durchgehend eingehalten.'],
+    oton:'Der Prototyp denkt von der Aufgabe des Nutzers her, nicht von der Struktur des Shops. Das ist der Unterschied zwischen einem Verkaufskatalog und einem echten Beratungswerkzeug.',
+    satz:'In Klarheit und Mobile-Erlebnis ist der Prototyp schon auf dem Niveau, das du für 23.000 € hättest kaufen können. Die zwei Kontrast- und Tap-Target-Korrekturen sind kleine Stellschrauben, aber vor dem Launch zu drehen.' },
+];
+
+/* ---------- Helfer ---------- */
+const fmt = n => n.toFixed(1).replace('.', ',');
+const sfmt = n => (n>=0?'+':'') + fmt(n);
+const mean = (s, keys) => keys.reduce((a,k)=>a+s[k],0)/keys.length;
+const avg = (arr) => arr.reduce((a,b)=>a+b,0)/arr.length;
+const catsOf = d => d.cats || STDCATS;
+const labelsOf = d => d.catLabels || STD;
+DATA.forEach(d => { const c = catsOf(d); d.gOld = mean(d.scores_old, c); d.gNew = mean(d.scores_new, c); });
+
+/* ---------- KPI Gesamt ---------- */
+const allOld = avg(DATA.map(d=>d.gOld));
+const allNew = avg(DATA.map(d=>d.gNew));
+document.getElementById('kpi-old').textContent = fmt(allOld);
+document.getElementById('kpi-new').textContent = fmt(allNew);
+document.getElementById('kpi-delta').textContent = sfmt(allNew-allOld);
+document.getElementById('kpi-old-bar').style.width = (allOld*10)+'%';
+document.getElementById('kpi-new-bar').style.width = (allNew*10)+'%';
+
+/* ---------- Geraete-Matrix Alt vs Neu ---------- */
+const deskAlt = avg(DATA.map(d=>d.note_desktop_alt));
+const mobAlt  = avg(DATA.map(d=>d.note_mobil_alt));
+const deskNeu = avg(DATA.map(d=>d.note_desktop_neu));
+const mobNeu  = avg(DATA.map(d=>d.note_mobil_neu));
+document.getElementById('kpi-gap-neu').textContent = sfmt(mobNeu-deskNeu);
+document.getElementById('kpi-gap-neu').classList.add(mobNeu>=deskNeu ? 'text-rp-red' : 'text-amber-400');
+document.getElementById('kpi-gap-alt').textContent = sfmt(mobAlt-deskAlt);
+
+function matCell(val, cls){
+  return '<div><div class="flex items-baseline justify-between mb-1"><span class="font-anton text-3xl '+cls.txt+'">'+fmt(val)+'</span></div>'+
+    '<div class="bar"><span class="'+cls.bar+'" style="width:'+(val*10)+'%"></span></div></div>';
+}
+document.getElementById('devmatrix').innerHTML =
+  '<div></div>'+
+  '<div class="text-[11px] uppercase tracking-widest text-white/40 text-center">Desktop</div>'+
+  '<div class="text-[11px] uppercase tracking-widest text-white/40 text-center">Mobil</div>'+
+  '<div class="text-xs uppercase tracking-widest text-white/45">Alt</div>'+
+  matCell(deskAlt,{txt:'text-white/70',bar:'bg-white/35'})+
+  matCell(mobAlt,{txt:'text-white/70',bar:'bg-white/25'})+
+  '<div class="text-xs uppercase tracking-widest text-rp-red">Neu</div>'+
+  matCell(deskNeu,{txt:'text-white',bar:'bg-rp-red'})+
+  matCell(mobNeu,{txt:'text-white',bar:'bg-rp-red'});
+
+/* ---------- Geraete-Chips (Ranking + Karten) ---------- */
+function devChips(d, compact){
+  const wk = d.note_mobil_neu <= d.note_desktop_neu-2;
+  const pad = compact ? 'px-2 py-0.5' : 'px-2 py-1';
+  const neu = '<div class="flex items-center gap-1.5">'+
+      '<span class="text-[9px] uppercase tracking-wider text-rp-red/80 w-7 shrink-0">Neu</span>'+
+      '<span class="rounded ring-1 ring-white/15 bg-white/5 '+pad+' text-white/75">D <b class="text-white">'+d.note_desktop_neu+'</b></span>'+
+      '<span class="rounded ring-1 '+pad+' '+(wk?'ring-amber-500/40 bg-amber-500/10 text-amber-300':'ring-white/15 bg-white/5 text-white/75')+'">M <b class="'+(wk?'text-amber-300':'text-white')+'">'+d.note_mobil_neu+'</b></span></div>';
+  const alt = '<div class="flex items-center gap-1.5">'+
+      '<span class="text-[9px] uppercase tracking-wider text-white/35 w-7 shrink-0">Alt</span>'+
+      '<span class="rounded ring-1 ring-white/10 bg-white/5 '+pad+' text-white/45">D '+d.note_desktop_alt+'</span>'+
+      '<span class="rounded ring-1 ring-white/10 bg-white/5 '+pad+' text-white/45">M '+d.note_mobil_alt+'</span></div>';
+  return '<div class="shrink-0 flex flex-col items-end gap-1 text-xs">'+neu+alt+'</div>';
+}
+
+/* ---------- Ranking ---------- */
+const ranked = [...DATA].sort((a,b)=>b.gNew-a.gNew);
+document.getElementById('ranking').innerHTML = ranked.map(d => {
+  const up = d.gNew>=d.gOld;
+  const delta = sfmt(d.gNew-d.gOld);
+  const badge = up ? 'bg-rp-red/15 text-rp-red ring-rp-red/30' : 'bg-amber-500/15 text-amber-400 ring-amber-500/30';
+  const tag = d.rolle==='experte' ? '<span class="ml-2 align-middle text-[10px] uppercase tracking-wider rounded bg-white/10 ring-1 ring-white/15 px-1.5 py-0.5 text-white/60">Experte</span>' : '';
+  return '<div>'+
+    '<div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-2 mb-2">'+
+      '<div class="font-semibold">'+d.persona+' <span class="text-white/45 font-normal text-sm">· '+d.sub+'</span>'+tag+'</div>'+
+      '<div class="flex items-center gap-2 shrink-0"><span class="text-white/45 text-sm">'+fmt(d.gOld)+' → <b class="text-white">'+fmt(d.gNew)+'</b></span><span class="text-xs font-bold rounded ring-1 px-1.5 py-0.5 '+badge+'">'+delta+'</span></div>'+
+    '</div>'+
+    '<div class="flex items-center gap-4">'+
+      '<div class="relative bar flex-1" style="height:.9rem">'+
+        '<span class="bg-white/30" style="width:'+(d.gOld*10)+'%"></span>'+
+        '<span class="bg-rp-red absolute top-0 left-0" style="width:'+(d.gNew*10)+'%;height:.45rem"></span>'+
+      '</div>'+ devChips(d, false) +
+    '</div>'+
+  '</div>';
+}).join('');
+
+/* ---------- Kategorie-Vergleich (nur Kunden) ---------- */
+const kunden = DATA.filter(d=>d.rolle==='kunde');
+const catComp = STDCATS.map(k => {
+  const o = avg(kunden.map(d=>d.scores_old[k]));
+  const n = avg(kunden.map(d=>d.scores_new[k]));
+  return { k, label:STD[k], o, n };
+}).sort((a,b)=>(b.n-b.o)-(a.n-a.o));
+document.getElementById('catcompare').innerHTML = catComp.map(c =>
+  '<div>'+
+    '<div class="flex items-baseline justify-between mb-1.5"><span class="font-semibold">'+c.label+'</span>'+
+      '<span class="text-sm text-white/50">'+fmt(c.o)+' → <b class="text-white">'+fmt(c.n)+'</b> <span class="text-rp-red font-bold">('+sfmt(c.n-c.o)+')</span></span></div>'+
+    '<div class="bar catbar mb-1"><span class="bg-white/30" style="width:'+(c.o*10)+'%"></span></div>'+
+    '<div class="bar catbar"><span class="bg-rp-red" style="width:'+(c.n*10)+'%"></span></div>'+
+  '</div>').join('');
+
+/* ---------- Mini-Kategorie-Gitter je Karte ---------- */
+function catGrid(d){
+  const c = catsOf(d), L = labelsOf(d);
+  return '<div class="grid grid-cols-1 gap-1.5">'+ c.map(k=>{
+    const o=d.scores_old[k], n=d.scores_new[k]; const up=n>=o;
+    return '<div class="flex items-center gap-2 text-xs">'+
+      '<span class="w-36 shrink-0 text-white/50 truncate">'+L[k]+'</span>'+
+      '<div class="bar flex-1" style="height:.4rem"><span class="'+(up?'bg-rp-red':'bg-amber-400')+'" style="width:'+(n*10)+'%"></span></div>'+
+      '<span class="w-14 text-right text-white/45 tabular-nums">'+o+'→<b class="text-white">'+n+'</b></span>'+
+    '</div>';
+  }).join('')+'</div>';
+}
+
+/* ---------- Karten ---------- */
+function card(d){
+  const up = d.gNew>=d.gOld;
+  const delta=sfmt(d.gNew-d.gOld);
+  const deltaCls = up?'text-rp-red':'text-amber-400';
+  const exp = d.rolle==='experte';
+  const extra = d.extra ? '<div class="mt-4 rounded-xl bg-rp-red/10 ring-1 ring-rp-red/25 p-4"><div class="text-[11px] uppercase tracking-widest text-rp-red mb-1">'+d.extra.label+'</div><p class="text-sm text-white/80">'+d.extra.text+'</p></div>' : '';
+  const mobilAlt = d.mobil_alt ? '<div class="mt-2 text-xs text-white/55"><span class="uppercase tracking-widest text-white/35">Alt mobil:</span> '+d.mobil_alt+'</div>' : '';
+  return '<article class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6 '+(exp?'ring-rp-red/30':'')+'">'+
+    '<div class="flex items-start justify-between gap-4">'+
+      '<div><div class="font-anton text-2xl uppercase leading-none">'+d.persona+'</div>'+
+        '<div class="text-sm text-white/55 mt-1">'+d.sub+'</div>'+
+        '<div class="mt-2">'+devChips(d, true)+'</div>'+
+      '</div>'+
+      '<div class="text-right shrink-0"><div class="text-xs text-white/40">Alt → Neu</div>'+
+        '<div class="font-anton text-2xl">'+fmt(d.gOld)+'<span class="text-white/40 mx-1">→</span><span class="text-rp-red">'+fmt(d.gNew)+'</span></div>'+
+        '<div class="text-xs font-bold '+deltaCls+'">'+delta+'</div></div>'+
+    '</div>'+
+    '<div class="mt-4 rounded-xl bg-black/30 ring-1 ring-white/10 p-3 text-sm italic text-white/85">„'+d.oton+'“</div>'+
+    '<div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">'+
+      '<div><div class="text-[11px] uppercase tracking-widest text-white/40 mb-1">Sucht</div><p class="text-white/75">'+d.sucht+'</p>'+
+        '<div class="text-[11px] uppercase tracking-widest text-white/40 mt-3 mb-1">Findet es</div><p class="text-white/75">'+d.findet+'</p></div>'+
+      '<div>'+catGrid(d)+'</div>'+
+    '</div>'+
+    '<div class="mt-4 grid sm:grid-cols-2 gap-4">'+
+      '<div><div class="text-[11px] uppercase tracking-widest text-rp-red mb-1.5">Stark an der neuen Seite</div><ul class="space-y-1.5 text-sm text-white/80">'+d.staerken.map(s=>'<li class="flex gap-2"><span class="text-rp-red">+</span><span>'+s+'</span></li>').join('')+'</ul></div>'+
+      '<div><div class="text-[11px] uppercase tracking-widest text-amber-400 mb-1.5">Lücken / Kritik</div><ul class="space-y-1.5 text-sm text-white/80">'+d.schwaechen.map(s=>'<li class="flex gap-2"><span class="text-amber-400">–</span><span>'+s+'</span></li>').join('')+'</ul></div>'+
+    '</div>'+
+    '<div class="mt-4 rounded-xl bg-amber-500/10 ring-1 ring-amber-500/25 p-3"><div class="text-[11px] uppercase tracking-widest text-amber-400 mb-1">Mobil-Beobachtung (neu)</div><p class="text-sm text-white/80">'+d.mobil+'</p>'+mobilAlt+'</div>'+
+    extra+
+    '<div class="mt-4 pt-4 border-t border-white/10"><div class="text-[11px] uppercase tracking-widest text-white/40 mb-1">Satz an Achim</div><p class="text-sm text-white font-medium">'+d.satz+'</p></div>'+
+  '</article>';
+}
+document.getElementById('cards-kunden').innerHTML = DATA.filter(d=>d.rolle==='kunde').map(card).join('');
+document.getElementById('cards-experten').innerHTML = DATA.filter(d=>d.rolle==='experte').map(card).join('');
+
+/* ---------- Befunde-Renderer ---------- */
+const sevCls = { 'hoch':'bg-rp-red/20 text-rp-red ring-rp-red/40', 'mittel-hoch':'bg-orange-500/20 text-orange-400 ring-orange-500/40', 'mittel':'bg-amber-500/20 text-amber-400 ring-amber-500/40', 'niedrig-mittel':'bg-yellow-500/15 text-yellow-300 ring-yellow-500/30', 'niedrig':'bg-white/10 text-white/55 ring-white/20' };
+function renderFindings(id, list){
+  document.getElementById(id).innerHTML = list.map(f =>
+    '<div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-5">'+
+      '<div class="flex items-center gap-3 mb-2"><span class="text-[10px] font-bold uppercase tracking-wider rounded-full ring-1 px-2 py-0.5 '+sevCls[f.sev]+'">'+f.sev+'</span>'+
+        '<h3 class="font-anton text-xl uppercase leading-none">'+f.titel+'</h3></div>'+
+      '<p class="text-sm text-white/75">'+f.text+'</p>'+
+      '<div class="mt-3 text-[11px] uppercase tracking-wider text-white/35">Genannt von: '+f.wer+'</div>'+
+    '</div>').join('');
+}
+const FINDINGS = [
+  { sev:'mittel-hoch', titel:'Reichweite vor Handwerk bleibt der Reibungspunkt', wer:'Best-Ager',
+    text:'Trotz Meister- und Retül-Badge liest der Skeptiker zuerst „Der Experte aus den Videos&ldquo; und die YouTube-Zahlen. Für nicht-video-affine Kundschaft wirkt das wie Selbstlob. Meister und Werkstatt-Kompetenz sollten gleichwertig und lesbar in den ersten Viewport.' },
+  { sev:'mittel', titel:'Echte Kundenstimmen fehlen als Beweis', wer:'Marketing · Rennrad',
+    text:'Der neue Social-Proof-Block (YouTube-Abo, Newsletter) ist der richtige Schritt, aber es fehlen echte O-Töne oder Referenzen von Kunden, die Fitting oder Kauf gemacht haben. Sie würden den Vertrauenskreis schließen, den der Video-Content öffnet.' },
+  { sev:'mittel', titel:'Fahrwerk-Service genannt, aber ohne Tiefe', wer:'Rennrad · MTB · Werkstatt',
+    text:'Die Startseite nennt den Fahrwerk-Service jetzt, das wird positiv registriert. Es fehlt aber eine eigene Service-Unterseite und die Kategorie im Reparatur-Formular. Wer Federgabel- oder Dämpfer-Service sucht, landet im Nichts.' },
+  { sev:'mittel', titel:'Bike-Finder spricht nur Rennrad-Sprache', wer:'MTB · Specialized-Sucher',
+    text:'Schritt 1 (Alltag / Sportlich / Racer) passt nicht für MTB und Enduro und ist für gezielte Markensucher ein Umweg. Nötig sind kategoriespezifische Optionen (Trail/Enduro/Bike-Park) und ein Marken-Shortcut.' },
+  { sev:'mittel', titel:'Erster Eindruck dunkel/sportlich schreckt einen Teil ab', wer:'Familie · E-Bike · Best-Ager',
+    text:'Schwarz-Rot wirkt auf Familie, Einsteigerin und Best-Ager „wie ein Gaming-/Motorradladen&ldquo;. Der einladende Familien-/Einsteiger-Einstieg existiert, kommt aber zu tief im Scroll und ist im ersten Eindruck nicht spürbar.' },
+  { sev:'niedrig-mittel', titel:'Specialized-Direkteinstieg & Leasing-Raten', wer:'Specialized-Sucher · E-Bike',
+    text:'Der gezielte Sucher will einen direkten Specialized-Einstieg ab Startseite statt des Umwegs über Kategorie und Scrollen. Die Einsteigerin vermisst konkrete Leasing-Monatsraten oder ein Rechenbeispiel statt nur Endpreisen.' },
+  { sev:'niedrig', titel:'Mehrsprachigkeit DE/FR fehlt (noch)', wer:'Kontext / Marketing',
+    text:'DE/FR war auf der alten Seite Standard. In der Grenzregion ist FR (später NL/EN) Pflicht. Im Prototyp aktuell bewusst nur DE.' },
+];
+renderFindings('findings', FINDINGS);
+
+const MOBIL = [
+  { sev:'mittel', titel:'Tap-Targets der Chips & Tags zu klein', wer:'UI/UX',
+    text:'Die Filter-Chips auf der Videos-Seite und die Spec-Tags auf den Bike-Karten liegen unter den empfohlenen 44&nbsp;px und sind mit dem Daumen unsicher zu treffen. Größere, klar abgesetzte Touch-Flächen nötig.' },
+  { sev:'mittel', titel:'Kontrast im Dark-Theme knapp unter AA', wer:'UI/UX · Best-Ager',
+    text:'Hellgraue Labels, kursive Öffnungszeiten und Chip-Tags auf dunklem Grund erreichen mobil sehr wahrscheinlich nicht WCAG&nbsp;AA 4,5:1. Besonders für ältere Augen ein echter Reibungspunkt, Kontrast und Schriftgrößen anheben.' },
+  { sev:'niedrig-mittel', titel:'Bike-Finder schiebt Preise nach unten', wer:'High-End-Enthusiast',
+    text:'Auf den Kategorie-Landingpages steht der lange 3-Schritte-Finder vor der Bike-Liste. Mobil scrollt man eine ganze Weile, bis Modelle und Preise auftauchen. Liste hochziehen oder Finder mobil kompakter.' },
+  { sev:'niedrig', titel:'Hero-Standbild wirkt mobil flacher', wer:'Specialized-Sucher',
+    text:'Reines Prototyp-Artefakt: das Hero-Video erscheint im Screenshot als Standbild und wirkt mobil etwas flach. Im Live-Betrieb mit Autoplay-Loop entschärft sich das.' },
+];
+renderFindings('findings-mobil', MOBIL);
+</script>
+</body>
+</html>

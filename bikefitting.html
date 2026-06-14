@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bikefitting · RETÜL FIT bei Racepoint (Prototyp)</title>
+<!-- ===== RACEPOINT KOMBI-PROTOTYP · LEISTUNGS-LANDINGPAGE · Inhalte aus racepoint.be/service/bikefitting ===== -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { cond:['"Roboto Condensed"','sans-serif'], anton:['Anton','sans-serif'] },
+  colors: { rp: { red:'#E83637', reddark:'#c5282a', ink:'#0e0f11' } }
+} } }
+</script>
+<link rel="stylesheet" href="kombi.css">
+</head>
+<body class="text-white">
+
+<div id="site-header"></div>
+
+<!-- HERO (Bild aus der alten Seite) -->
+<section class="relative h-screen min-h-[680px] w-full overflow-hidden">
+  <img src="assets/bikefitting-hero.jpg" class="absolute inset-0 h-full w-full object-cover brightness-105" alt="Bikefitting bei Racepoint">
+  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/45 pointer-events-none"></div>
+  <div class="absolute bottom-0 inset-x-0 z-10"><div class="mx-auto max-w-7xl px-6 lg:px-10 pb-12 md:pb-16 [text-shadow:0_2px_24px_rgba(0,0,0,.85)]">
+    <div class="inline-flex items-center gap-2 rounded-full bg-rp-red px-3 py-1 text-xs font-bold uppercase mb-5">Bikefitting · RETÜL FIT</div>
+    <h1 class="font-anton text-5xl md:text-7xl uppercase leading-[0.9] max-w-3xl">Damit dein Bike <span class="text-rp-red">wirklich passt.</span></h1>
+    <p class="mt-4 text-lg md:text-xl text-white/85 max-w-2xl">Wir passen dein neues Bike an deinen Körper und deine Fahrgewohnheiten an, um dir ein Höchstmaß an Ergonomie und Komfort zu bieten.</p>
+    <div class="mt-7 flex flex-wrap gap-3">
+      <a href="#termin" class="rounded-xl bg-rp-red px-7 py-4 text-base font-bold uppercase hover:bg-rp-reddark transition">Termin anfragen</a>
+    </div>
+  </div></div>
+</section>
+
+<!-- DIE OPTIMALE EINSTELLUNG -->
+<section class="border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 grid md:grid-cols-[1.1fr_1fr] gap-12 items-center">
+    <div>
+      <div class="text-sm text-rp-red font-semibold uppercase tracking-wider">RETÜL FIT</div>
+      <h2 class="mt-2 font-anton text-4xl md:text-5xl uppercase">Die optimale Einstellung für dein Rad</h2>
+      <p class="mt-5 text-white/80 text-lg leading-relaxed">Retül Fit ist mehr als nur ein Bike-Fit · es ist die Möglichkeit, etwas über deinen Körper zu lernen und die Ursache deiner Schmerzen zu erkennen. Ein richtiges Fitting hilft dir, deine Ziele auf dem Rad zu erreichen.</p>
+      <p class="mt-4 text-white/70 leading-relaxed">Mit der 3D-Motion-Capture-Technologie misst das Retül-System präzise jeden Bewegungsgrad, jeden Abstand im Millimeterbereich und liefert dir und dem Fitter die notwendigen Daten.</p>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <img src="assets/bikefitting-2.jpg" class="rounded-2xl object-cover ring-1 ring-white/10 h-full w-full" alt="Bikefitting Vermessung">
+      <img src="assets/bikefitting-1.jpg" class="rounded-2xl object-cover ring-1 ring-white/10 h-full w-full" alt="Retül System">
+    </div>
+  </div>
+</section>
+
+<!-- VORTEILE -->
+<section class="border-t border-white/5 bg-zinc-950">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+    <div class="text-center mb-12"><h2 class="font-anton text-4xl md:text-5xl uppercase">Deine Vorteile</h2></div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-7"><h3 class="font-anton text-2xl uppercase">Erhöhter Komfort</h3><p class="mt-3 text-white/70">Unabhängig deines Niveaus ist Komfort entscheidend für ein optimales Fahrerlebnis.</p></div>
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-7"><h3 class="font-anton text-2xl uppercase">Verletzungsprävention</h3><p class="mt-3 text-white/70">Die richtige Position auf dem Rad hält deinen Körper gerade und beugt Verletzungen vor.</p></div>
+      <div class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-7"><h3 class="font-anton text-2xl uppercase">Performance</h3><p class="mt-3 text-white/70">Eine optimale Position auf dem Bike erhöht nicht nur den Komfort, sondern maximiert auch deine Leistungsfähigkeit und Ausdauer.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABLAUF (4 Schritte, Original-Texte) -->
+<section class="border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+    <div class="text-center mb-12"><h2 class="font-anton text-4xl md:text-5xl uppercase">So läuft dein Retül Fit</h2></div>
+    <div class="grid md:grid-cols-2 gap-10 items-center mb-12">
+      <img src="assets/bikefitting-3.jpg" class="rounded-2xl object-cover ring-1 ring-white/10 w-full order-2 md:order-1" alt="Retül Vantage Kamerasystem">
+      <div class="space-y-6 order-1 md:order-2">
+        <div class="flex gap-5"><div class="font-anton text-4xl text-rp-red shrink-0">01</div><p class="text-white/75">Beginnend mit einer körperlichen Vorabuntersuchung berücksichtigt dein Fitter die Einschränkungen deines Körpers, frühere Verletzungen bzw. Schmerzen sowie deine sportlichen Ziele.</p></div>
+        <div class="flex gap-5"><div class="font-anton text-4xl text-rp-red shrink-0">02</div><p class="text-white/75">Im Anschluss bringt der Fitter an wichtigen anatomischen Stellen LED-Marker an, die vom Retül Vantage Kamerasystem erfasst werden. Das System sammelt dreidimensionale Echtzeitdaten jeder Pedalumdrehung.</p></div>
+        <div class="flex gap-5"><div class="font-anton text-4xl text-rp-red shrink-0">03</div><p class="text-white/75">Die Echtzeitdaten werden in die Retül-Fit-Software übertragen, sodass der Fitter deine perfekte Sitzposition einstellen kann.</p></div>
+        <div class="flex gap-5"><div class="font-anton text-4xl text-rp-red shrink-0">04</div><p class="text-white/75">Sobald deine endgültige Position eingestellt wurde, erstellt der Fitter mit dem Retül Zin-Werkzeug ein digitales Abbild deines endgültigen Fahrrad-Setups.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREIS & FAQ -->
+<section class="border-t border-white/5 bg-zinc-950">
+  <div class="mx-auto max-w-5xl px-6 lg:px-10 py-20">
+    <div class="grid md:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+      <!-- Preis-Anker -->
+      <div class="rounded-3xl bg-rp-red/10 ring-1 ring-rp-red/30 p-8">
+        <div class="text-sm text-rp-red font-semibold uppercase tracking-wider">Was kostet ein Fitting?</div>
+        <div class="mt-2 font-anton text-5xl uppercase">ab 149 €</div>
+        <p class="mt-3 text-white/75">Komplettes Retül Fit · rund 1,5 Stunden, individuell für dich. Beim Kauf eines neuen Bikes bei uns rechnen wir das Fitting an.</p>
+        <a href="#termin" class="mt-6 inline-block rounded-xl bg-rp-red px-6 py-3.5 font-bold uppercase hover:bg-rp-reddark transition">Termin anfragen</a>
+        <p class="mt-4 text-xs text-white/40">Richtwert · genauen Preis nennt dir Achim je nach Aufwand.</p>
+      </div>
+      <!-- FAQ -->
+      <div>
+        <h2 class="font-anton text-3xl md:text-4xl uppercase mb-5">Häufige Fragen</h2>
+        <div class="space-y-3">
+          <details class="group rounded-2xl bg-white/5 ring-1 ring-white/10 p-5">
+            <summary class="flex cursor-pointer items-center justify-between font-semibold text-white list-none">Wie lange dauert ein Bikefitting?<span class="text-rp-red transition group-open:rotate-45 text-2xl leading-none">+</span></summary>
+            <p class="mt-3 text-white/70">Plane rund 1,5 Stunden ein · von der Vorabuntersuchung über die 3D-Vermessung bis zur fertigen Einstellung.</p>
+          </details>
+          <details class="group rounded-2xl bg-white/5 ring-1 ring-white/10 p-5">
+            <summary class="flex cursor-pointer items-center justify-between font-semibold text-white list-none">Muss ich mein eigenes Rad mitbringen?<span class="text-rp-red transition group-open:rotate-45 text-2xl leading-none">+</span></summary>
+            <p class="mt-3 text-white/70">Wenn du schon ein Rad hast: gerne mitbringen, dann fitten wir genau darauf. Vor einem Neukauf nutzen wir unser Fit-Bike und übertragen die Werte aufs neue Bike.</p>
+          </details>
+          <details class="group rounded-2xl bg-white/5 ring-1 ring-white/10 p-5">
+            <summary class="flex cursor-pointer items-center justify-between font-semibold text-white list-none">Funktioniert das auch ohne Specialized-Bike?<span class="text-rp-red transition group-open:rotate-45 text-2xl leading-none">+</span></summary>
+            <p class="mt-3 text-white/70">Ja · Retül Fit ist markenunabhängig. Egal welches Rad du fährst, wir bringen dich in die passende Position.</p>
+          </details>
+          <details class="group rounded-2xl bg-white/5 ring-1 ring-white/10 p-5">
+            <summary class="flex cursor-pointer items-center justify-between font-semibold text-white list-none">Für wen lohnt sich ein Fitting?<span class="text-rp-red transition group-open:rotate-45 text-2xl leading-none">+</span></summary>
+            <p class="mt-3 text-white/70">Für alle, die viel oder ambitioniert fahren · und besonders, wenn du Schmerzen oder Taubheitsgefühle kennst. Eine saubere Sitzposition beugt vor und macht schneller.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERMIN-FORMULAR (MOCKUP) -->
+<section id="termin" class="relative overflow-hidden border-t border-white/5">
+  <img src="assets/bikefitting-4.jpg" class="absolute inset-0 h-full w-full object-cover" alt="">
+  <div class="absolute inset-0 bg-black/80"></div>
+  <div class="relative mx-auto max-w-3xl px-6 lg:px-10 py-20">
+    <div class="text-center mb-8 [text-shadow:0_2px_24px_rgba(0,0,0,.85)]"><h2 class="font-anton text-4xl md:text-5xl uppercase">Termin anfragen</h2><p class="mt-3 text-white/70">Sag uns kurz Bescheid · Achim oder Elke melden sich bei dir.</p></div>
+    <form onsubmit="return false" class="rounded-3xl bg-white/5 ring-1 ring-white/10 backdrop-blur p-6 md:p-10 space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <label class="block"><span class="text-sm text-white/60">Name</span><input class="mt-1 w-full rounded-xl bg-white/10 ring-1 ring-white/15 px-4 py-3 outline-none focus:ring-rp-red" placeholder="Dein Name"></label>
+        <label class="block"><span class="text-sm text-white/60">E-Mail</span><input class="mt-1 w-full rounded-xl bg-white/10 ring-1 ring-white/15 px-4 py-3 outline-none focus:ring-rp-red" placeholder="du@beispiel.be"></label>
+        <label class="block"><span class="text-sm text-white/60">Telefon</span><input class="mt-1 w-full rounded-xl bg-white/10 ring-1 ring-white/15 px-4 py-3 outline-none focus:ring-rp-red" placeholder="+32 …"></label>
+        <label class="block"><span class="text-sm text-white/60">Anliegen</span><select class="mt-1 w-full rounded-xl bg-white/10 ring-1 ring-white/15 px-4 py-3 outline-none focus:ring-rp-red"><option>Bikefitting · RETÜL FIT</option><option>Kaufberatung</option><option>Beides</option></select></label>
+        <label class="block sm:col-span-2"><span class="text-sm text-white/60">Wunschtermin</span><input type="date" class="mt-1 w-full rounded-xl bg-white/10 ring-1 ring-white/15 px-4 py-3 outline-none focus:ring-rp-red"></label>
+        <label class="block sm:col-span-2"><span class="text-sm text-white/60">Nachricht</span><textarea rows="4" class="mt-1 w-full rounded-xl bg-white/10 ring-1 ring-white/15 px-4 py-3 outline-none focus:ring-rp-red" placeholder="Worum geht es?"></textarea></label>
+      </div>
+      <button class="w-full rounded-xl bg-rp-red px-7 py-4 font-bold uppercase hover:bg-rp-reddark transition">Termin anfragen</button>
+      <p class="text-center text-xs text-white/40">Prototyp · Formular ohne Funktion · im echten Shop öffnet sich hier ein Kalender.</p>
+    </form>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="data.js"></script>
+<script>window.RP_PAGE = { active:'bikefitting' };</script>
+<script src="app.js"></script>
+</body>
+</html>

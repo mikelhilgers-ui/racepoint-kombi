@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Racepoint · Der Experte aus den Videos (Prototyp)</title>
+<!-- ===== RACEPOINT KOMBI-PROTOTYP · WEGWERF-CODE · STARTSEITE ===== -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<script>
+tailwind.config = { theme: { extend: {
+  fontFamily: { cond:['"Roboto Condensed"','sans-serif'], anton:['Anton','sans-serif'] },
+  colors: { rp: { red:'#E83637', reddark:'#c5282a', ink:'#0e0f11' } }
+} } }
+</script>
+<link rel="stylesheet" href="kombi.css">
+</head>
+<body class="text-white">
+
+<div id="site-header"></div>
+
+<!-- =================== HERO (Fullscreen-Video + 3 CTAs unten links) =================== -->
+<section class="relative h-screen min-h-[680px] w-full overflow-hidden">
+  <div class="heroplay absolute inset-0" data-id="5TcRRpUy5T4" data-cover="full"><img src="https://img.youtube.com/vi/5TcRRpUy5T4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/5TcRRpUy5T4/hqdefault.jpg'" class="absolute inset-0 h-full w-full object-cover brightness-110" alt="Cervelo S5 Dreambuild bei Racepoint"><div class="heroframe"></div></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/40 pointer-events-none"></div>
+  <div class="absolute bottom-0 inset-x-0 z-10"><div class="mx-auto max-w-7xl px-6 lg:px-10 pb-12 md:pb-16 [text-shadow:0_2px_24px_rgba(0,0,0,.85)]">
+    <div class="flex flex-wrap items-center gap-2 mb-5">
+      <div class="inline-flex items-center gap-2 rounded-full bg-rp-red px-3 py-1 text-xs font-bold uppercase"><span class="h-1.5 w-1.5 rounded-full bg-white"></span> Meister-Werkstatt · Retül-Bikefitting · Specialized Elite Händler</div>
+      <div class="inline-flex items-center rounded-full bg-white/10 ring-1 ring-white/15 px-3 py-1 text-xs font-medium text-white/80">~80.000 Abos · ~18 Mio. Aufrufe</div>
+    </div>
+    <h1 class="font-anton text-5xl md:text-6xl lg:text-7xl leading-[0.92] tracking-tight max-w-4xl uppercase">Der Experte aus den Videos. <span class="text-rp-red">Jetzt für dein Bike.</span></h1>
+    <p class="mt-4 text-lg md:text-xl text-white/85 max-w-2xl">80.000 Menschen schauen zu, wie hier aus Carbon Träume werden. Deiner ist der nächste. Beratung, Bikefitting und Werkstatt in Schönberg, Ostbelgien.</p>
+    <div class="mt-7 flex flex-wrap gap-3">
+      <a href="bikefitting.html" class="rounded-xl bg-rp-red px-7 py-4 text-base font-bold uppercase hover:bg-rp-reddark transition">Termin · Beratung &amp; Bikefitting</a>
+      <a href="anfrage.html" class="rounded-xl bg-white/15 backdrop-blur px-7 py-4 text-base font-semibold uppercase ring-1 ring-white/25 hover:bg-white/25 transition">Bike anfragen</a>
+      <a href="reparatur.html" class="rounded-xl bg-white/15 backdrop-blur px-7 py-4 text-base font-semibold uppercase ring-1 ring-white/25 hover:bg-white/25 transition">Reparatur / Werkstatt</a>
+    </div>
+  </div></div>
+</section>
+
+<!-- =================== WELCHER BIKER BIST DU? =================== -->
+<section id="typen" class="border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+    <div class="text-center mb-10">
+      <h2 class="font-anton text-4xl md:text-6xl uppercase leading-[0.95]">Welcher Biker <span class="text-rp-red">bist du?</span></h2>
+      <p class="mt-4 text-white/70 max-w-2xl mx-auto text-lg">Wähl deinen Stil · wir zeigen dir die passenden Bikes und den passenden Content. Den Rest klärt Achim persönlich.</p>
+      <p class="mt-3 text-sm text-white/55">Vom soliden Einstieg <span class="text-white font-semibold">ab 890 €</span> bis zum S-Works-Traum · für jedes Budget das passende Rad.</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+      <a href="rennrad.html" class="group relative h-56 md:h-72 rounded-2xl overflow-hidden ring-1 ring-white/10">
+        <img src="assets/roadbike-shop.jpg" class="absolute inset-0 h-full w-full object-cover brightness-105 group-hover:scale-105 transition duration-500" alt="">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10"></div>
+        <div class="absolute bottom-4 left-5 right-4 [text-shadow:0_2px_16px_rgba(0,0,0,.85)]"><div class="font-anton text-3xl uppercase group-hover:text-rp-red transition">Rennrad</div><div class="text-sm text-white/70">Asphalt · Tempo · Aero</div></div>
+        <span class="absolute top-4 right-4 text-white/60 group-hover:text-rp-red transition">→</span>
+      </a>
+      <a href="gravel.html" class="group relative h-56 md:h-72 rounded-2xl overflow-hidden ring-1 ring-white/10">
+        <img src="assets/gravel-ride.jpg" class="absolute inset-0 h-full w-full object-cover brightness-105 group-hover:scale-105 transition duration-500" alt="">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10"></div>
+        <div class="absolute bottom-4 left-5 right-4 [text-shadow:0_2px_16px_rgba(0,0,0,.85)]"><div class="font-anton text-3xl uppercase group-hover:text-rp-red transition">Gravel</div><div class="text-sm text-white/70">Schotter · Abenteuer · Weite</div></div>
+        <span class="absolute top-4 right-4 text-white/60 group-hover:text-rp-red transition">→</span>
+      </a>
+      <a href="mtb.html" class="group relative h-56 md:h-72 rounded-2xl overflow-hidden ring-1 ring-white/10">
+        <img src="assets/mtb-action.jpg" class="absolute inset-0 h-full w-full object-cover brightness-105 group-hover:scale-105 transition duration-500" alt="">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10"></div>
+        <div class="absolute bottom-4 left-5 right-4 [text-shadow:0_2px_16px_rgba(0,0,0,.85)]"><div class="font-anton text-3xl uppercase group-hover:text-rp-red transition">MTB</div><div class="text-sm text-white/70">Trail · Wald · Adrenalin</div></div>
+        <span class="absolute top-4 right-4 text-white/60 group-hover:text-rp-red transition">→</span>
+      </a>
+      <a href="ebike.html" class="group relative h-56 md:h-72 rounded-2xl overflow-hidden ring-1 ring-white/10">
+        <img src="assets/mtb-ridge.jpg" class="absolute inset-0 h-full w-full object-cover brightness-105 group-hover:scale-105 transition duration-500" alt="E-Bike fahren in Ostbelgien">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10"></div>
+        <div class="absolute bottom-4 left-5 right-4 [text-shadow:0_2px_16px_rgba(0,0,0,.85)]"><div class="font-anton text-3xl uppercase group-hover:text-rp-red transition">E-Bike</div><div class="text-sm text-white/70">Rückenwind · Alltag · Touren</div></div>
+        <span class="absolute top-4 right-4 text-white/60 group-hover:text-rp-red transition">→</span>
+      </a>
+      <a href="familie.html" class="group relative col-span-2 sm:col-span-1 h-56 md:h-72 rounded-2xl overflow-hidden ring-1 ring-white/10">
+        <img src="assets/shop-interior.jpg" class="absolute inset-0 h-full w-full object-cover brightness-105 group-hover:scale-105 transition duration-500" alt="Familien- und Alltagsräder im Racepoint-Showroom">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10"></div>
+        <div class="absolute bottom-4 left-5 right-4 [text-shadow:0_2px_16px_rgba(0,0,0,.85)]"><div class="font-anton text-3xl uppercase group-hover:text-rp-red transition">Familie &amp; Alltag</div><div class="text-sm text-white/70">Einstieg · Kinder · Trekking</div></div>
+        <span class="absolute top-4 right-4 text-white/60 group-hover:text-rp-red transition">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== ACHIM / TEAM =================== -->
+<section class="border-t border-white/5 bg-zinc-950">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 grid md:grid-cols-[1.1fr_1fr] gap-10 items-center">
+    <div>
+      <div class="text-sm text-rp-red font-semibold uppercase tracking-wider">Achim Leufgen · Meister Zweiradmechanik · Retuel-zertifiziert</div>
+      <p class="mt-3 text-2xl md:text-3xl font-light leading-snug">"Ich bin der Achim aus den Videos. Seit 18 Jahren baue ich Bikes, die wirklich passen. Komm vorbei, wir finden deins."</p>
+      <p class="mt-4 text-white/55">Mit Ehefrau Elke und dem Racepoint-Team in Schönberg, Ostbelgien.</p>
+      <a href="ueber-uns.html" class="mt-6 inline-block rounded-xl bg-white/10 ring-1 ring-white/20 px-6 py-3 font-semibold uppercase hover:bg-white/20 transition">Mehr über Achim &amp; das Team</a>
+    </div>
+    <figure><img src="assets/achim-team.jpg" class="w-full rounded-2xl object-cover ring-1 ring-white/10" alt="Achim, Elke und das Racepoint-Team"><figcaption class="mt-2 text-xs text-white/40">Das Racepoint-Team · Foto: racepoint.be</figcaption></figure>
+  </div>
+</section>
+
+<!-- =================== BUILDS & VIDEOS =================== -->
+<section class="border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+    <div class="flex items-end justify-between mb-8"><h2 class="font-anton text-4xl md:text-5xl uppercase">Builds &amp; Videos</h2><a href="videos.html" class="text-sm text-rp-red font-semibold uppercase">Alle ansehen →</a></div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="yt group relative aspect-[3/4] rounded-2xl overflow-hidden" data-id="9KIh7oOIPT4"><img src="https://img.youtube.com/vi/9KIh7oOIPT4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/9KIh7oOIPT4/hqdefault.jpg'" class="h-full w-full object-cover group-hover:scale-105 transition duration-500"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><span class="absolute top-4 left-4 grid place-items-center h-10 w-10 rounded-full bg-rp-red text-white"><svg class="w-4 h-4 ml-0.5"><use href="#ic-play"/></svg></span><div class="absolute bottom-4 left-4 right-4"><div class="font-semibold leading-tight">S-Works Tarmac SL8 LTD · Unboxing</div><div class="text-xs text-white/60">Limited Edition</div></div></div>
+      <div class="yt group relative aspect-[3/4] rounded-2xl overflow-hidden" data-id="MHXDMPbMypQ"><img src="https://img.youtube.com/vi/MHXDMPbMypQ/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/MHXDMPbMypQ/hqdefault.jpg'" class="h-full w-full object-cover group-hover:scale-105 transition duration-500"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><span class="absolute top-4 left-4 grid place-items-center h-10 w-10 rounded-full bg-rp-red text-white"><svg class="w-4 h-4 ml-0.5"><use href="#ic-play"/></svg></span><div class="absolute bottom-4 left-4 right-4"><div class="font-semibold leading-tight">Tarmac SL7 S-Works · Rapid CLX</div><div class="text-xs text-white/60">Dreambuild · SRAM Red AXS</div></div></div>
+      <div class="yt group relative aspect-[3/4] rounded-2xl overflow-hidden" data-id="vV_rL9yq620"><img src="https://img.youtube.com/vi/vV_rL9yq620/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/vV_rL9yq620/hqdefault.jpg'" class="h-full w-full object-cover group-hover:scale-105 transition duration-500"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><span class="absolute top-4 left-4 grid place-items-center h-10 w-10 rounded-full bg-rp-red text-white"><svg class="w-4 h-4 ml-0.5"><use href="#ic-play"/></svg></span><div class="absolute bottom-4 left-4 right-4"><div class="font-semibold leading-tight">Aethos S-Works · Bike Ahead</div><div class="text-xs text-white/60">Roadbike · SRAM Red AXS</div></div></div>
+      <div class="yt group relative aspect-[3/4] rounded-2xl overflow-hidden" data-id="cIBBbESSOoc"><img src="https://img.youtube.com/vi/cIBBbESSOoc/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/cIBBbESSOoc/hqdefault.jpg'" class="h-full w-full object-cover group-hover:scale-105 transition duration-500"><div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div><span class="absolute top-4 left-4 grid place-items-center h-10 w-10 rounded-full bg-rp-red text-white"><svg class="w-4 h-4 ml-0.5"><use href="#ic-play"/></svg></span><div class="absolute bottom-4 left-4 right-4"><div class="font-semibold leading-tight">Specialized Crux · Gravel</div><div class="text-xs text-white/60">S-Works · Force XPLR</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SHOWROOM / KOMM VORBEI (Vollbild) =================== -->
+<section class="relative overflow-hidden">
+  <img src="assets/shop-interior.jpg" class="absolute inset-0 h-full w-full object-cover brightness-110" alt="">
+  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="relative mx-auto max-w-7xl px-6 lg:px-10 py-28 md:py-36 text-center [text-shadow:0_2px_24px_rgba(0,0,0,.85)]">
+    <h2 class="font-anton text-4xl md:text-6xl uppercase">Komm vorbei, wo die Videos entstehen.</h2>
+    <p class="mt-5 text-white/85 max-w-2xl mx-auto text-lg">Ein Showroom voller Traumbikes, eine Werkstatt auf Profi-Niveau und der Experte, den du aus den Videos kennst. Mitten in Schönberg, Ostbelgien.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="bikefitting.html" class="rounded-xl bg-rp-red px-7 py-4 font-bold uppercase hover:bg-rp-reddark transition">Beratungstermin sichern</a>
+      <a href="kontakt.html" class="rounded-xl bg-white/15 ring-1 ring-white/25 px-7 py-4 font-semibold uppercase hover:bg-white/25 transition">Anfahrt &amp; Öffnungszeiten</a>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SERVICE & BIKEFITTING =================== -->
+<section class="border-t border-white/5 bg-zinc-950">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 grid md:grid-cols-2 gap-10 items-center">
+    <figure class="order-2 md:order-1"><img src="assets/bikefitting.jpg" class="w-full rounded-2xl object-cover ring-1 ring-white/10" alt="Bikefitting bei Racepoint"></figure>
+    <div class="order-1 md:order-2">
+      <div class="text-sm text-rp-red font-semibold uppercase tracking-wider">Service für alle Marken</div>
+      <h2 class="mt-2 font-anton text-4xl md:text-5xl uppercase">Werkstatt &amp; Bikefitting</h2>
+      <p class="mt-4 text-white/70 max-w-md text-lg">Retuel-Bikefitting für die perfekte Sitzposition und eine Werkstatt auf Profi-Niveau · für alle Marken, nicht nur Specialized. Inklusive Fahrwerk-Service (Federgabel &amp; Dämpfer). Vormittags Werkstatt-Fokus.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="bikefitting.html" class="rounded-xl bg-rp-red px-6 py-3.5 font-bold uppercase hover:bg-rp-reddark transition">Bikefitting-Termin</a>
+        <a href="reparatur.html" class="rounded-xl bg-white/10 ring-1 ring-white/20 px-6 py-3.5 font-semibold uppercase hover:bg-white/20 transition">Reparatur anfragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SOCIAL PROOF / REICHWEITE =================== -->
+<section class="border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-16">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+      <div><div class="font-anton text-4xl md:text-5xl text-rp-red">Meister</div><div class="mt-1 text-sm text-white/60 uppercase tracking-wide">Zweiradmechanik · 18 J.</div></div>
+      <div><div class="font-anton text-4xl md:text-5xl text-rp-red">Retül</div><div class="mt-1 text-sm text-white/60 uppercase tracking-wide">Fit-Bikefitting-Experte</div></div>
+      <div><div class="font-anton text-4xl md:text-5xl text-rp-red">Elite</div><div class="mt-1 text-sm text-white/60 uppercase tracking-wide">Specialized Händler</div></div>
+      <div><div class="font-anton text-4xl md:text-5xl text-rp-red">~80k</div><div class="mt-1 text-sm text-white/60 uppercase tracking-wide">YouTube-Abos</div></div>
+      <div><div class="font-anton text-4xl md:text-5xl text-rp-red">~18 Mio.</div><div class="mt-1 text-sm text-white/60 uppercase tracking-wide">Video-Aufrufe</div></div>
+    </div>
+    <p class="mt-8 text-center text-white/70 max-w-2xl mx-auto text-lg">Eine Reichweite, die kein anderer Bikeshop der Region hat · und ein Experte, dem zehntausende Radfahrer vertrauen.</p>
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
+      <a href="https://www.youtube.com/channel/UCh-2Lv_-mEgE5F66f8L-VLw" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-rp-red px-7 py-4 font-bold uppercase hover:bg-rp-reddark transition"><svg class="w-5 h-5"><use href="#ic-yt"/></svg> Kanal abonnieren</a>
+      <a href="videos.html" class="inline-block rounded-xl bg-white/10 ring-1 ring-white/20 px-7 py-4 font-semibold uppercase hover:bg-white/20 transition">Builds &amp; Videos ansehen</a>
+    </div>
+    <form onsubmit="return false" class="mt-6 mx-auto max-w-md flex flex-col sm:flex-row gap-2">
+      <input type="email" class="flex-1 rounded-xl bg-white/5 ring-1 ring-white/15 px-4 py-3 outline-none focus:ring-rp-red placeholder:text-white/40" placeholder="E-Mail für neue Builds &amp; Aktionen">
+      <button class="rounded-xl bg-white/10 ring-1 ring-white/20 px-6 py-3 font-semibold uppercase hover:bg-white/20 transition">Newsletter</button>
+    </form>
+    <p class="mt-2 text-center text-xs text-white/30">Prototyp · kein echter Versand. Du kennst Achim aus den Videos · bleib auf dem Laufenden.</p>
+  </div>
+</section>
+
+<!-- =================== KUNDENSTIMMEN =================== -->
+<section class="border-t border-white/5 bg-zinc-950">
+  <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20">
+    <div class="text-center mb-10">
+      <h2 class="font-anton text-4xl md:text-5xl uppercase">Was Kunden sagen</h2>
+      <p class="mt-3 text-white/60 max-w-2xl mx-auto">Echte Beratung, ehrliche Empfehlung, saubere Werkstatt · das hören wir am häufigsten.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <figure class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-7">
+        <div class="text-rp-red text-lg">★★★★★</div>
+        <blockquote class="mt-3 text-white/85 leading-relaxed">"Bei Achim wird mein Rad so perfekt aufgebaut und gewartet, wie ich es nirgends sonst erlebt habe. Man merkt, dass hier ein Meister am Werk ist."</blockquote>
+        <figcaption class="mt-4 text-sm text-white/50">Markus R. · Rennrad-Kunde</figcaption>
+      </figure>
+      <figure class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-7">
+        <div class="text-rp-red text-lg">★★★★★</div>
+        <blockquote class="mt-3 text-white/85 leading-relaxed">"Das Bikefitting hat meine Rückenschmerzen auf langen Touren verschwinden lassen. Endlich sitze ich richtig · jeden Cent wert."</blockquote>
+        <figcaption class="mt-4 text-sm text-white/50">Sandra L. · Bikefitting</figcaption>
+      </figure>
+      <figure class="rounded-2xl bg-white/5 ring-1 ring-white/10 p-7">
+        <div class="text-rp-red text-lg">★★★★★</div>
+        <blockquote class="mt-3 text-white/85 leading-relaxed">"Mein Mountainbike ist keine Specialized, trotzdem top betreut. Fahrwerk-Service erstklassig, faire Preise, alles erklärt."</blockquote>
+        <figcaption class="mt-4 text-sm text-white/50">Tobias K. · Werkstatt-Kunde</figcaption>
+      </figure>
+    </div>
+    <p class="mt-6 text-center text-xs text-white/30">Beispiel-Stimmen für den Prototyp · im echten Auftritt eingebunden aus Google-/Facebook-Bewertungen.</p>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="data.js"></script>
+<script>window.RP_PAGE = { active:'bikes' };</script>
+<script src="app.js"></script>
+</body>
+</html>
